@@ -13,12 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,14 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public String s0 = "";
-    public String s1 = "";
-    public String s2 = "";
-    public String s3 = "";
-    public String s4 = "";
-    public String s5 = "";
-    public String s6 = "";
-    public String[] starry = new String[7];
+
 
 
     @Override
@@ -75,98 +62,11 @@ public class MainActivity extends AppCompatActivity {
         EditText v4 = (EditText) findViewById(R.id.e4);
         EditText v5 = (EditText) findViewById(R.id.e5);
         EditText v6 = (EditText) findViewById(R.id.e6);
-        s0 = v0.getText().toString();
-        starry[0] = s0;
-        //s0 is team name
-        s1 = v1.getText().toString();
-        //s1 is name of student 1
-        s2 = v2.getText().toString();
-        //s2 is entry no. of student 1
-        s3 = v3.getText().toString();
-        //s3 is name of student 2
-        s4 = v4.getText().toString();
-        //s4 is entry no. of student 2
-        s5 = v5.getText().toString();
-        //s5 is name of student 3
-        s6 = v6.getText().toString();
-        //s6 is entry no. of student 3
-        starry[1] = s1;
-        starry[2] = s2;
-        starry[3] = s3;
-        starry[4] = s4;
-        starry[5] = s5;
-        starry[6] = s6;
-        char x;
-        String p = "";
-        int i = 6;
-        int ascii = 0;
-        int k = 0;
-        Toast.makeText(getApplicationContext(), "LOOP START", Toast.LENGTH_LONG).show();
-        while (i != 0) {
-            p = starry[i];
-            Toast.makeText(getApplicationContext(), p, Toast.LENGTH_LONG).show();
-            if (p ==""  || p == null){
-                Toast.makeText(getApplicationContext(), "LOT", Toast.LENGTH_LONG).show();
-            }
-            k = 0;
-            if (i == 1 || i == 3 || i == 5) {
-                while (k < p.length()) {
-                    p.toUpperCase();
-                    x = p.charAt(k);
-                    ascii = (int) x;
-                    k++;
-
-                    if (ascii <= 64 & ascii >= 91) {
-                        //error
-                        Toast.makeText(getApplicationContext(), s1, Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-            else {
-                while (k < p.length()) {
-                    if (k < 4 || k > 5) {
-                        x = p.charAt(k);
-                        ascii = (int) x;
-                        k++;
-                        if (ascii <= 47 & ascii >= 58) {
-                            //error
-                            Toast.makeText(getApplicationContext(), s1, Toast.LENGTH_LONG).show();
-                        }
-                        else {
-                            p.toUpperCase();
-                            x = p.charAt(k);
-                            ascii = (int) x;
-                            k++;
-
-                            if (ascii <= 64 & ascii >= 91) {
-                                //error
-                                Toast.makeText(getApplicationContext(), s1, Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    }
-
-                }
-            }
-            i=i-1;
-        }
 
 
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://agni.iitd.ernet.in/cop290/assign0/register/" ,
-                new Response.Listener<String>() {
 
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(),"Error!! xx(",Toast.LENGTH_LONG).show();
-                    }
-                }){
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
@@ -182,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
                 return params;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
 }
