@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+    //s0 is team name, s1,s3,s3 are student names and s2,s4,s6 are respective entry no.s
     public String s0 = "";
     public String s1 = "";
     public String s2 = "";
@@ -102,20 +102,10 @@ public class MainActivity extends AppCompatActivity {
         int ascii = 0;
         int k = 0;
 
-
-
-
-
-
-
-     
-
-
-
-
+        //upload at server
         StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://agni.iitd.ernet.in/cop290/assign0/register/" ,
                 new Response.Listener<String>() {
-
+                    //request method.post is used to post the data
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
@@ -137,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 params.put("entry1",s4);
                 params.put("entry2",s5);
                 params.put("entry3",s6);
-                //Toast.makeText(getApplicationContext(),s1,Toast.LENGTH_LONG).show();
+                //these parameters are mapped string to string
 
                 return params;
             }
